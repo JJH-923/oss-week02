@@ -7,5 +7,8 @@
   "scripts": {
     "start": "node main.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "inko": "^1.1.1"
+  }
 }
