@@ -13,7 +13,21 @@ const scores = Array.from({ length: 20 }, () => Math.floor(Math.random() * 101))
 console.log("start:", scores);
 
 // (a)
+const odd = scores.filter((n)=>n%2===1);
+console.log("odd:",odd);
+const doubled = odd.map((n)=>n*2);
+console.log("double:", doubled);
+
+const sorted = doubled.sort((a,b)=>b-a);
+console.log("sorted:", sorted);
+
+const half = Math.ceil(sorted.length / 2);
+const firstHalf = sorted.slice(0,half);
+console.log("first half:", firstHalf);
 
 // (b)
+const result = scores.filter((s)=> s%2===1).map((s)=>s*2).sort((a,b)=>b-a).slice(0, half);
+console.log("chain:", result);
 
 // (c)
+console.log("scores again:", scores);
