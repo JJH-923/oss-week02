@@ -1,0 +1,5 @@
+Anyone can generate code. Few can ship it.
+Read the code, test the code, review it, ship it.
+You write code, you read code, you ship the code.
+Write it, test it, ship the code, own the code.
+Prove the code. Then generate, then review, ship the proof.

@@ -1,0 +1,11 @@
+{
+  "name": "oss-week02",
+  "version": "1.0.0",
+  "description": "Week 2 hands-on: Node, JavaScript, npm",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "license": "MIT"
+}
