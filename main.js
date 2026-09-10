@@ -11,32 +11,23 @@
 // Usage
 //   node main.js            English keys -> Korean   (inko.en2ko)
 //   node main.js --reverse  Korean -> English keys   (inko.ko2en)
-//
-// You will need: filter, map, forEach, if / else, and en2ko / ko2en from inko.
-// Package docs: https://www.npmjs.com/package/inko
-//
-// When it works, check three things:
-//   package.json has "inko" under dependencies
-//   node_modules/inko exists
-//   git status does NOT show node_modules
-//
-// The readline part is given. Do not change it. We come back to it in week 3 (async).
-//   rl.on("line", f)   runs f every time you press Enter, with the line you typed
-//   rl.on("close", f)  runs f once, after you type q (which calls rl.close())
-// So: collect lines in the "line" handler, do the work in the "close" handler.
 
 import readline from "node:readline";
+import Inko from "inko";
 
-// TODO: import Inko from "inko" and create an instance
+const inko = new Inko();
 
 const reverse = process.argv.includes("--reverse");
 const lines = [];
 
-// stdin = what you type, stdout = the screen. rl reads stdin one line at a time.
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
 if (reverse) console.log("Type lines in Korean (ko -> en).");
 else console.log("Type lines in English keys (en -> ko).");
+
 console.log('Type "q" to finish.');
 
 rl.on("line", (line) => {
@@ -44,13 +35,21 @@ rl.on("line", (line) => {
     rl.close();
     return;
   }
+
   lines.push(line);
 });
 
 rl.on("close", () => {
-  // TODO
-  // Drop empty lines, convert each line with inko, and print them numbered:
-  //   1. 오픈 소스
-  //   2. 깃허브 노드
-  // Use ko2en instead of en2ko when reverse is true.
+  lines
+    .filter((line) => line.trim() !== "")
+    .map((line) => {
+      if (reverse) {
+        return inko.ko2en(line);
+      } else {
+        return inko.en2ko(line);
+      }
+    })
+    .forEach((line, i) => {
+      console.log(`${i + 1}. ${line}`);
+    });
 });
